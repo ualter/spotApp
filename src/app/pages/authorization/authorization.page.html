@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ titlePage }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="fullheight xc">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label style="font-size: 12px;">Client Id:</ion-label>
+            <ion-input style="font-size: 12px;" placeholder="Spotify Client Id" [(ngModel)]="clientId" (ngModelChange)='onChangeButtons($event)'></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <br/>
+        </ion-col>
+      </ion-row>
+
+      <ion-row id="rowCode" style="display: none;">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Authorization Code</ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="font-size: 12px;text-align: justify;">
+            {{code}}
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button (click) ="getAuthorizationCode()"  [disabled]="!validDataCode">Authorize</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <br/>
+        </ion-col>
+      </ion-row>  
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label style="font-size: 12px;">Client Secret:</ion-label>
+            <ion-input style="font-size: 12px;" placeholder="Spotify Client Secret" [(ngModel)]="clientSecret" (ngModelChange)='onChangeButtons($event)'></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+     
+      <ion-row id="rowToken" style="display: none;">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Token</ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="font-size: 12px;text-align: justify;">
+            {{token}}
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button (click) ="getToken()"  [disabled]="!validDataToken">Get Token</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
